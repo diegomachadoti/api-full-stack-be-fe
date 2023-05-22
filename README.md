@@ -50,8 +50,7 @@ Instalar eslint (Deixar o codigo mais limpo e ajudar no desenvolvimento)
 > ✔ Do you require semicolons? · No / Yes
 > Local ESLint installation not found.
 > The config that you've selected requires the following dependencies:
-
-eslint@latest
+> eslint@latest
 ✔ Would you like to install them now? · No / Yes
 ✔ Which package manager do you want to use? · npm
 Installing eslint@latest
@@ -59,10 +58,6 @@ Installing eslint@latest
 Rodar nosso server local direto
 
 > node src/index.js
-
-Após adicionar a taks de start
-
-> npm start
 
 Após adicionar a task de dev
 
@@ -85,3 +80,10 @@ CREATE TABLE tasks(
 )
 ```
 
+## Executar Projeto
+
+Subir projeto local
+> npm start
+
+Importar requests no postman para utilização
+-   Arquivo na raiz do projeto **postman_collection.json**
