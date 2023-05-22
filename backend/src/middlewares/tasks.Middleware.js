@@ -6,12 +6,12 @@ const validateFieldTitle = (request, response, next) => {
     if (body.title === undefined) {
         return response
             .status(400)
-            .json({ message: "The field title is required!!" });
+            .json({ message: "Campo 'Título' é obrigatório!!" });
     }
     if (body.title === "") {
         return response
             .status(400)
-            .json({ message: "Title cannot be empty!!" });
+            .json({ message: "Campo 'Título' não pode ser vazio!!" });
     }
 
     next(); // Se não possui nenhum problema request pode seguir para chamada roter (Controller)
@@ -23,12 +23,12 @@ const validateFieldStatus = (request, response, next) => {
     if (body.status === undefined) {
         return response
             .status(400)
-            .json({ message: "The field status is required!!" });
+            .json({ message: "Campo 'Status' é obrigatório!!" });
     }
     if (body.status === "") {
         return response
             .status(400)
-            .json({ message: "Status cannot be empty!!" });
+            .json({ message: "Campo 'Status' não pode ser vazio!!" });
     }
 
     next(); // Se não possui nenhum problema request pode seguir para chamada roter (Controller)
