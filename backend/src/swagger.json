@@ -1,0 +1,109 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API full stack BE e FE",
+        "description": "Mostra como configurar uma aplicação Node.js com expressjs, swagger-ui-express para geração da Swagger UI e swagger-jsdoc para especificar os endpoints implementados com expressjs por meio de comentários JSDoc.",
+        "version": "1.0.0",
+        "termsOfService": "https://github.com/diegomachadoti/api-full-stack-be-fe/blob/master/README.md",
+        "contact": {
+            "email": "deejaydiego@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3333",
+            "description": "Api de test local"
+        }
+    ],
+    "paths": {
+        "/tasks": {
+            "post": {
+                "summary": "Realizar cadastro de tarefas",
+                "description": "Endpoint para realizar cadastro de Tarefa de estudo",
+                "tags": ["Taks"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Tasks"
+                            },
+                            "examples": {
+                                "tasks": {
+                                    "value": {
+                                        "title": "Objetivo e Metas: Estudar Projeto Full Stack",
+                                        "status": "em andamento"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Campo 'title e/ou status' é obrigatório!!"
+                    },
+                    "200": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "tipe": "object",
+                                    "$ref": "#/components/schemas/Tasks"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/tasks/": {
+            "get": {
+                "summary": "Realizar consulta de tarefas",
+                "description": "Endpoint para realizar consulta de Tarefa de estudo",
+                "tags": ["Taks"],
+                "_parameters": [
+                    {
+                        "name": "tags",
+                        "in": "query",
+                        "description": "Id da tarefa",
+                        "requred": true,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "tipe": "object",
+                                    "$ref": "#/components/schemas/Tasks"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Tasks": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

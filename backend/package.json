@@ -8,8 +8,7 @@
         "start": "npm run docker-start && npm run db-init && node src/server.js",
         "dev": "nodemon src/server.js",
         "docker-start": "docker-compose up -d",
-        "db-init": "node src/db-init.js",
-        "swagger": "node src/swagger.js"
+        "db-init": "node src/db-init.js"
     },
     "keywords": [],
     "author": "",

@@ -3,13 +3,20 @@ const express = require("express");
 const router = require("./routes/router");
 const cors = require("cors");
 const app = express();
-const setupSwagger = require("./swagger");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJson = require("./swagger.json");
 
-app.use(express.json()); // Para rrabalhar com json no response na camada de BE
-app.use(cors()); // Para o FE consiga controlar BE
-app.use(router); // Para nossa camada BE utilizar as rotas
-//app.use(setupSwagger);
-setupSwagger(app);
+// Para rrabalhar com json no response na camada de BE
+app.use(express.json());
+
+// Para o FE consiga controlar BE
+app.use(cors());
+
+// Para nossa camada BE utilizar as rotas
+app.use(router);
+
+// Configuração do swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJson));
 
 // Inicie o servidor
 app.listen(3000, () => {

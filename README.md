@@ -14,10 +14,11 @@ API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)
 
 ## Comandos
 
-Iniciar nossa aplicação gerando info padrão (*Opcional para desenvolvimento do projeto*)
+Iniciar nossa aplicação gerando info padrão (_Opcional para desenvolvimento do projeto_)
+
 > npm init -y
 
-Instalar dependencias (*Obrigatório*)
+Instalar dependencias (_Obrigatório_)
 
 > npm install express
 
@@ -33,11 +34,11 @@ Instalar dependencias (*Obrigatório*)
 
 > npm install swagger-ui-express
 
-Instalar eslint (*Obrigatório para desenvolvimento*)
+Instalar eslint (_Obrigatório para desenvolvimento_)
+
 > npx eslint --init
 
-***Deixar o código mais limpo e ajudar no desenvolvimento***
-
+**_Deixar o código mais limpo e ajudar no desenvolvimento_**
 
 -   Need to install the following packages: eslint@8.41.0
     -   Ok to proceed? (y) y
@@ -59,48 +60,56 @@ Instalar eslint (*Obrigatório para desenvolvimento*)
 
 ✔ Installing eslint@latest
 
-Rodar nosso server local direto (*Opcional para desenvolvimento*)
+Rodar nosso server local direto (_Opcional para desenvolvimento_)
 
 > node src/index.js
 
-Após adicionar a task de dev (*Opcional para desenvolvimento*)
+Após adicionar a task de dev (_Opcional para desenvolvimento_)
 
 > npm run dev
 
-Subir pela primeira vez o container do mysql usando o docker (*Opcional para desenvolvimento*)
+Subir pela primeira vez o container do mysql usando o docker (_Opcional para desenvolvimento_)
 
 > docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql
 
-Ver imagens Docker (*Opcional*)
+Ver imagens Docker (_Opcional_)
+
 > docker image list
 
-Subir a imagem do mysql manualmente (*Opcional*)
-> docker start mysql
+Subir a imagem do mysql manualmente (_Opcional_)
 
+> docker start mysql
 
 ## Executar Projeto
 
-#### Subir camada de BE local (diretório */backend*) 
+#### Subir camada de BE local (diretório _/backend_)
+
 > npm start
 
-***Este comando starta automaticamente todo o ambiente***
-- Docker com a imagem do mysql
-- Cria a tabela e realiza a carga inicial no BD
-- Server do app
-- Server do Swagger
-----
-#### Subindo camada de FE usando Server local (diretório */frontend*) 
+**_Este comando starta automaticamente todo o ambiente_**
 
-- Start utilizando o plugin Live Server do vscode ou abrindo o index.html local
+-   Docker com a imagem do mysql
+-   Cria a tabela e realiza a carga inicial no BD
+-   Server do app
+-   Server do Swagger (*Ainda em atualização*)
+    - http://127.0.0.1:3000/api-docs/
+
+---
+
+#### Subindo camada de FE usando Server local (diretório _/frontend_)
+
+-   Start utilizando o plugin Live Server do vscode ou abrindo o index.html local
     > http://127.0.0.1:5500/frontend/index.html
 
-----
+---
+
 #### Importar requests no postman para utilização das chamadas de BE.
 
 -   Arquivo na raiz do projeto **postman_collection.json**
 
-
 ## Links adicionais
 
-- [FE - Material Google](https://fonts.google.com/icons)
-- [FE - Icons](https://ionic.io/ionicons)
+-   [FE - Material Google](https://fonts.google.com/icons)
+-   [FE - Icons](https://ionic.io/ionicons)
+-   [BE - Swagger](https://swagger.io/specification/)
+-   [BE - Swagger Json Example](https://petstore.swagger.io/v2/swagger.json)
