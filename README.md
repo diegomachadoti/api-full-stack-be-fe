@@ -29,6 +29,10 @@ Instalar dependencias
 
 > npm install cors
 
+> npm install swagger-jsdoc swagger-ui-express
+
+> npm install swagger-ui-express
+
 Instalar eslint (Deixar o codigo mais limpo e ajudar no desenvolvimento)
 
 > npx eslint --init
