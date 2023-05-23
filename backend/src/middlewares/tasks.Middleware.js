@@ -1,8 +1,8 @@
+// Camada aonde realizamos as validações das requests
 const { request, response } = require("express");
 const mysql = require("mysql2/promise");
 require("dotenv").config();
 
-// Camada aonde realiar as validações das requests
 const validateFieldTitle = (request, response, next) => {
     const { body } = request;
 
@@ -15,12 +15,6 @@ const validateFieldTitle = (request, response, next) => {
         return response
             .status(400)
             .json({ message: "Campo 'Título' não pode ser vazio!!" });
-    }
-
-    if (body.title === undefined) {
-        return response
-            .status(400)
-            .json({ message: "Campo 'Título' é obrigatório!!" });
     }
 
     next(); // Se não possui nenhum problema request pode seguir para chamada roter (Controller)
@@ -50,35 +44,37 @@ const connection = mysql.createPool({
     database: process.env.MYSQL_DB,
 });
 
-
-const validatedTasksExists = (request, response, next) => {
+const validatedTasksExists = async (request, response, next) => {
+    console.log("Cheguei aqui");
     const { body } = request;
-    // Verifica se já existe uma tarefa com o mesmo título
-    connection.query(
-        "SELECT * FROM tasks WHERE title = ?",
-        [body.title],
-        (err, results) => {
-            if (err) {
-                // Trate qualquer erro de consulta ao banco de dados
-                return response
-                    .status(500)
-                    .json({ message: "Erro interno do servidor" });
-            }
 
-            if (results.length > 0) {
-                // Já existe uma tarefa com o mesmo título
-                return response
-                    .status(400)
-                    .json({
-                        message: "Já existe uma tarefa com o mesmo título",
-                    });
-            }
+    try {
+        // Verifica se já existe uma tarefa com o mesmo título
+        const [results] = await connection.query(
+            "SELECT * FROM tasks WHERE title = ?",
+            [body.title]
+        );
+
+        console.log(results);
+        if (results.length > 0) {
+            // Já existe uma tarefa com o mesmo título
+            return response.status(400).json({
+                message: "Já existe uma tarefa com o mesmo título",
+            });
         }
-    );
-    next(); // O título está disponível, prossiga com a criação da tarefa
+
+        // O título está disponível, prossiga com a criação da tarefa
+        next();
+    } catch (err) {
+        // Trate qualquer erro de consulta ao banco de dados
+        return response
+            .status(500)
+            .json({ message: "Erro interno do servidor" });
+    }
 };
 
 module.exports = {
     validateFieldTitle,
     validateFieldStatus,
+    validatedTasksExists,
 };

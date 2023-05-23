@@ -16,17 +16,40 @@ const fetchTasks = async () => {
 };
 // ADD batendo no BE
 const addTask = async (event) => {
-    event.preventDefault(); // Bloqueado o comportamento padrão de pagina ao recarregar automaticamente
-    const task = { title: inputTask.value }; // pegar o objeto
-    await fetch(`${url}/tasks`, {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(task), // converter objeto para string
-    });
-    // Chamar load da tela após ADD
-    loadTasks();
-    inputTask.value = ""; // limpar o input após load
+    event.preventDefault();
+    const task = { title: inputTask.value };
+
+    try {
+        const response = await fetch(`${url}/tasks`, {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(task),
+        });
+
+        if (response.ok) {
+            // Requisição bem-sucedida (status 200-299)
+            const message = "Tarefa adicionada com sucesso!";
+            openPopup(message);
+        } else {
+            // Requisição com erro (status diferente de 200-299)
+            const errorData = await response.json();
+            const errorMessage =
+                errorData.message || "Ocorreu um erro ao adicionar a tarefa.";
+            openPopup(errorMessage);
+        }
+
+        loadTasks();
+        inputTask.value = "";
+    } catch (error) {
+        // Erro na requisição
+        console.error("Ocorreu um erro na requisição:", error);
+        const errorMessage =
+            "Ocorreu um erro na requisição. Verifique a conexão com a API.";
+        // Exiba a mensagem de erro em um pop-up ou na própria tela
+        openPopup(errorMessage);
+    }
 };
+
 // DELETE batendo no BE
 const deleteTask = async (id) => {
     await fetch(`${url}/tasks/${id}`, {
@@ -190,3 +213,33 @@ document.addEventListener("click", (e) => {
         window.location.href = url;
     }
 });
+
+/**
+ * Funções do pop-up de mensagem
+ */
+const openPopup = (message) => {
+    const popup = document.createElement("div");
+    popup.className = "popup";
+
+    const popupContent = document.createElement("div");
+    popupContent.className = "popup-content";
+
+    const popupMessage = document.createElement("p");
+    popupMessage.textContent = message;
+
+    const popupButton = document.createElement("button");
+    popupButton.textContent = "Fechar";
+    popupButton.className = "popup-button";
+    popupButton.addEventListener("click", closePopup);
+
+    popupContent.appendChild(popupMessage);
+    popupContent.appendChild(popupButton);
+    popup.appendChild(popupContent);
+
+    document.body.appendChild(popup);
+};
+
+const closePopup = () => {
+    const popup = document.querySelector(".popup");
+    document.body.removeChild(popup);
+};

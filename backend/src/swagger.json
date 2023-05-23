@@ -40,7 +40,31 @@
                 },
                 "responses": {
                     "400": {
-                        "description": "Campo 'title e/ou status' é obrigatório!!"
+                        "description": "Preenchimento dos campos 'title e/ou status'",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Tasks"
+                                },
+                                "examples": {
+                                    "example1": {
+                                        "value": {
+                                            "message": "Campo 'title' é obrigatório!"
+                                        }
+                                    },
+                                    "example2": {
+                                        "value": {
+                                            "message": "Campo 'status' é obrigatório!"
+                                        }
+                                    },
+                                    "example3": {
+                                        "value": {
+                                            "message": "Campo 'title' já existente!"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "200": {
                         "description": "CREATED",

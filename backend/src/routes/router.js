@@ -10,6 +10,7 @@ router.get("/tasks", tasksController.getAll);
 
 router.post(
     "/tasks",
+    tasksMiddlewares.validatedTasksExists,
     tasksMiddlewares.validateFieldTitle,
     tasksController.postCreatedTaks
 );
@@ -20,6 +21,7 @@ router.put(
     "/tasks/:id",
     tasksMiddlewares.validateFieldTitle,
     tasksMiddlewares.validateFieldStatus,
+    tasksMiddlewares.validatedTasksExists,
     tasksController.updateTaks
 );
 

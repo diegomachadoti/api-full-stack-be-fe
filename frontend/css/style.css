@@ -297,3 +297,33 @@ select:hover {
     border-bottom: none;
     border-right: none;
   }
+
+/* Pop-up */
+.popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup-button {
+  margin-top: 10px;
+  width: 50%;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: capitalize;
+  background-color: #ebebeb;
+  cursor: pointer;
+}
+

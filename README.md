@@ -1,6 +1,8 @@
 # api-full-stack-be-fe
 
-API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)
+**API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)**
+
+![app.png](frontend/app.png)
 
 ## Pré-requisitos
 
@@ -93,6 +95,8 @@ Subir a imagem do mysql manualmente (_Opcional_)
 -   Server do app
 -   Server do Swagger (*Ainda em atualização*)
     - http://127.0.0.1:3000/api-docs/
+
+![swagger.png](backend//swagger.png)
 
 ---
 
