@@ -2,22 +2,22 @@
 
 API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)
 
-### Pré-requisitos
+## Pré-requisitos
 
 -   [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 -   [node](https://nodejs.org/en/download)
+-   [Docker](https://docs.docker.com/engine/)
 -   Extensões Vscode
     -   [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
     -   [Database Server](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-database-client2)
     -   [Live Server](https://github.com/ritwickdey/vscode-live-server-plus-plus)
 
-### Comandos
+## Comandos
 
-Iniciar nossa aplicação gerando info padrão
-
+Iniciar nossa aplicação gerando info padrão (*Opcional para desenvolvimento do projeto*)
 > npm init -y
 
-Instalar dependencias
+Instalar dependencias (*Obrigatório*)
 
 > npm install express
 
@@ -33,9 +33,11 @@ Instalar dependencias
 
 > npm install swagger-ui-express
 
-Instalar eslint (Deixar o codigo mais limpo e ajudar no desenvolvimento)
-
+Instalar eslint (*Obrigatório para desenvolvimento*)
 > npx eslint --init
+
+***Deixar o código mais limpo e ajudar no desenvolvimento***
+
 
 -   Need to install the following packages: eslint@8.41.0
     -   Ok to proceed? (y) y
@@ -57,51 +59,48 @@ Instalar eslint (Deixar o codigo mais limpo e ajudar no desenvolvimento)
 
 ✔ Installing eslint@latest
 
-Rodar nosso server local direto
+Rodar nosso server local direto (*Opcional para desenvolvimento*)
 
 > node src/index.js
 
-Após adicionar a task de dev
+Após adicionar a task de dev (*Opcional para desenvolvimento*)
 
 > npm run dev
 
-Subir o container do mysql usando o docker
+Subir pela primeira vez o container do mysql usando o docker (*Opcional para desenvolvimento*)
 
 > docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql
 
-Criar banco de dados e tabela
+Ver imagens Docker (*Opcional*)
+> docker image list
 
-```
+Subir a imagem do mysql manualmente (*Opcional*)
+> docker start mysql
 
-CREATE DATABASE IF NOT EXISTS todolist;
-
-USE todolist;
-CREATE TABLE tasks(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(60) NOT NULL,
-    status VARCHAR(45) NOT NULL,
-    created_at VARCHAR(45) NOT NULL
-)
-```
 
 ## Executar Projeto
 
-Subir camada de BE local (diretório */backend*) 
+#### Subir camada de BE local (diretório */backend*) 
 > npm start
 
-Importar requests no postman para utilização das chamadas de BE.
-
--   Arquivo na raiz do projeto **postman_collection.json**
-
-*Obs. Sempre importante startar o container docker do mysql*
-
-
-Subindo camada de FE usando Server local (diretório */frontend*) 
+***Este comando starta automaticamente todo o ambiente***
+- Docker com a imagem do mysql
+- Cria a tabela e realiza a carga inicial no BD
+- Server do app
+- Server do Swagger
+----
+#### Subindo camada de FE usando Server local (diretório */frontend*) 
 
 - Start utilizando o plugin Live Server do vscode ou abrindo o index.html local
     > http://127.0.0.1:5500/frontend/index.html
 
+----
+#### Importar requests no postman para utilização das chamadas de BE.
 
-### Links adicionais
+-   Arquivo na raiz do projeto **postman_collection.json**
 
-[Material Google](https://fonts.google.com/icons)
+
+## Links adicionais
+
+- [FE - Material Google](https://fonts.google.com/icons)
+- [FE - Icons](https://ionic.io/ionicons)
