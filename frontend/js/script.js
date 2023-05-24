@@ -48,6 +48,36 @@ const addTask = async (event) => {
         // Exiba a mensagem de erro em um pop-up ou na própria tela
         openPopup(errorMessage);
     }
+
+    try {
+        const response = await fetch(`${url}/tasks`, {
+            method: "put",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(task),
+        });
+
+        if (response.ok) {
+            // Requisição bem-sucedida (status 200-299)
+            const message = "Tarefa atualizada com sucesso!";
+            openPopup(message);
+        } else {
+            // Requisição com erro (status diferente de 200-299)
+            const errorData = await response.json();
+            const errorMessage =
+                errorData.message || "Ocorreu um erro ao atualizar a tarefa.";
+            openPopup(errorMessage);
+        }
+
+        loadTasks();
+        inputTask.value = "";
+    } catch (error) {
+        // Erro na requisição
+        console.error("Ocorreu um erro na requisição:", error);
+        const errorMessage =
+            "Ocorreu um erro na requisição. Verifique a conexão com a API.";
+        // Exiba a mensagem de erro em um pop-up ou na própria tela
+        openPopup(errorMessage);
+    }
 };
 
 // DELETE batendo no BE
@@ -185,6 +215,7 @@ const loadTasks = async () => {
     });
 };
 
+// Link do componente da tela com a função que chamada o BE
 addForm.addEventListener("submit", addTask);
 loadTasks();
 

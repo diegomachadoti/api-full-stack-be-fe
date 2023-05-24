@@ -6,7 +6,7 @@ const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerJson = require("./swagger.json");
 
-// Para rrabalhar com json no response na camada de BE
+// Para trabalhar com json no response na camada de BE
 app.use(express.json());
 
 // Para o FE consiga controlar BE

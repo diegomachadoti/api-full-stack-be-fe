@@ -1,10 +1,46 @@
 # api-full-stack-be-fe
 
-**API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)**
+🎯 **API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)**
 
 ![app.png](frontend/app.png)
 
-## Pré-requisitos
+## 📁 Estrutura do projeto
+
+- **backend**
+    - src
+        - controller
+            * ***tasksController.js***  *Realiza as chamadas para a camada model*
+        - middlewares
+            * ***tasksMiddleware.js*** *Validações das requests chamadas no routes*
+        - models
+            * ***connections.js*** *Configuração de conexão com o banco de dados MySQL*
+            * ***tasksModel.js*** *Realiza interação com o banco de dados MySQL*
+        - routes
+            * ***router.js*** *Todas as rotas da aplicação*
+    ***app.js*** *Configurações iniciais / core da aplicação*
+    ***db-init.js*** *Criação da tabela e inserção inicial*
+    ***server.js*** *Inicialização da aplicação*
+    ***swagger.json*** *Configurações do Swagger*
+    ***.env*** *Variáveis de ambiente*
+    ***.eslintrc.json*** *Configurações do plugin de desenvolvimento instalado*
+    ***docker-compose.yml*** *Configurações do MySQL para execução no Docker*
+    ***Dockerfile*** *Configurações do ambiente Dockerizado*
+    ***package-lock.json*** *Gerado automaticamente conforme package.json*
+    ***package.json*** *Dependências do projeto*
+    ***TASKS.postman_collection.json*** *Arquivo de importação do Postman*
+
+- **frontend**
+    - css
+        * ***style.css*** *Estilo da página*
+    - js
+        * ***script.js*** *Funções de comportamento e chamadas para o backend*
+
+    ***index.html*** *página principal da aplicação*
+
+----
+
+
+## 🔨 Pré-requisitos
 
 -   [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 -   [node](https://nodejs.org/en/download)
@@ -14,7 +50,7 @@
     -   [Database Server](https://marketplace.visualstudio.com/items?itemName=cweijan.vscode-database-client2)
     -   [Live Server](https://github.com/ritwickdey/vscode-live-server-plus-plus)
 
-## Comandos
+## ⚙ Comandos
 
 Iniciar nossa aplicação gerando info padrão (_Opcional para desenvolvimento do projeto_)
 
@@ -82,7 +118,9 @@ Subir a imagem do mysql manualmente (_Opcional_)
 
 > docker start mysql
 
-## Executar Projeto
+
+
+## 🛠️ Executar Projeto
 
 #### Subir camada de BE local (diretório _/backend_)
 
@@ -113,7 +151,7 @@ Importar requests no postman para utilização das chamadas de BE.
 
 -   Arquivo na raiz do projeto **backend/postman_collection.json**
 
-## Links adicionais
+## 📚 Links adicionais
 
 -   [FE - Material Google](https://fonts.google.com/icons)
 -   [FE - Icons](https://ionic.io/ionicons)

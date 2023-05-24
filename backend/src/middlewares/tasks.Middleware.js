@@ -51,7 +51,7 @@ const validatedTasksExists = async (request, response, next) => {
         // Verifica se já existe uma tarefa com o mesmo título
         const [results] = await connection.query(
             "SELECT * FROM tasks WHERE title = ?",
-            [body.title]
+            [body.title.trim()]
         );
 
         //console.log(results);

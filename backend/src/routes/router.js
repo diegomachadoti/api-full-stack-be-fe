@@ -23,6 +23,7 @@ router.delete(
 
 router.put(
     "/tasks/:id",
+    tasksMiddlewares.validatedTasksExists,
     tasksMiddlewares.validateFieldTitle,
     tasksMiddlewares.validateFieldStatus,
     tasksMiddlewares.validatedTasksNotExists,
