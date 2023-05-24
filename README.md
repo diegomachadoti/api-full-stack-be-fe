@@ -17,16 +17,27 @@
             * ***tasksModel.js*** *Realiza interação com o banco de dados MySQL*
         - routes
             * ***router.js*** *Todas as rotas da aplicação*
+    
     ***app.js*** *Configurações iniciais / core da aplicação*
+    
     ***db-init.js*** *Criação da tabela e inserção inicial*
+    
     ***server.js*** *Inicialização da aplicação*
+    
     ***swagger.json*** *Configurações do Swagger*
+    
     ***.env*** *Variáveis de ambiente*
+    
     ***.eslintrc.json*** *Configurações do plugin de desenvolvimento instalado*
+    
     ***docker-compose.yml*** *Configurações do MySQL para execução no Docker*
+    
     ***Dockerfile*** *Configurações do ambiente Dockerizado*
+    
     ***package-lock.json*** *Gerado automaticamente conforme package.json*
+    
     ***package.json*** *Dependências do projeto*
+    
     ***TASKS.postman_collection.json*** *Arquivo de importação do Postman*
 
 - **frontend**
