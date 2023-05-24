@@ -2,20 +2,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* Estilizar pagina principal */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Urbanist", sans-serif;
 }
 
-
 /* Background */
 body {
     /* background-color: #7a7c7e; */
     background-color: var(--background-color);
     color: white;
+}
 
+/* Imagem logo Principal */
+.image-container {
+    padding: 2%;
+    position: absolute;
+    margin-top: -2rem;
+    margin-left: 5%;
 }
 
 /* Janela aonde contem todos os ementos */
@@ -125,7 +133,6 @@ select:hover {
     background-color: rgba(237, 42, 42, 0.9);
 }
 
-
 /* Menu */
 :root {
     --icon-size: 2.5rem;
@@ -133,66 +140,66 @@ select:hover {
     --border-radius: calc(var(--icon-size) / 4);
     --nav-item-padding: calc(var(--icon-size) / 2);
     --background-color: #333;
-  }
-  
-  .navbar-container {
+}
+
+.navbar-container {
     background-color: white;
     border-radius: var(--border-radius);
     width: max-content;
     margin: 0 auto;
     margin-top: 5rem;
     padding: 0 calc(var(--nav-item-padding) * 1.5);
-  }
-  
-  .list {
+}
+
+.list {
     display: flex;
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-  
-  .list a {
+}
+
+.list a {
     color: #333;
     text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: var(--nav-item-padding);
-  }
-  
-  .list .text {
-    font-size: .8em;
+}
+
+.list .text {
+    font-size: 0.8em;
     opacity: 0;
     pointer-events: none;
     transition: 250ms ease-in-out;
     position: absolute;
-    bottom: calc(.5 * var(--nav-item-padding));
+    bottom: calc(0.5 * var(--nav-item-padding));
     transform: translateY(50%);
-  }
-  
-  .list .icon {
+}
+
+.list .icon {
     position: relative;
     transition: 250ms ease-in-out;
-  }
-  
-  .list .icon svg {
+}
+
+.list .icon svg {
     fill: currentColor;
     width: var(--icon-size);
     height: var(--icon-size);
     display: block;
-  }
-  
-  .list .active .text {
+}
+
+.list .active .text {
     pointer-events: all;
     opacity: 1;
     transform: translateY(0);
-  }
-  
-  .list .active .icon {
+}
+
+.list .active .icon {
     transform: translateY(calc(-50% - var(--nav-item-padding)));
-  }
-  
-  /* .list .active::before {
+}
+
+/* .list .active::before {
     content: "";
     box-sizing: content-box;
     position: absolute;
@@ -229,39 +236,41 @@ select:hover {
     border-bottom: none;
     border-right: none;
   } */
-  
-  .list {
+
+.list {
     position: relative;
-  }
-  
-  .indicator {
+}
+
+.indicator {
     position: absolute;
-    left: calc(var(--position) * (var(--icon-size) + var(--nav-item-padding) * 2));
+    left: calc(
+        var(--position) * (var(--icon-size) + var(--nav-item-padding) * 2)
+    );
     transition: 250ms ease-in-out;
-  }
-  
-  .indicator::after,
-  .indicator::before {
+}
+
+.indicator::after,
+.indicator::before {
     content: "";
     position: absolute;
     border-radius: 100%;
-  }
-  
-  .indicator::after {
+}
+
+.indicator::after {
     background-color: hsl(100, 100%, 50%);
     width: calc(var(--icon-size) * 2);
     height: calc(var(--icon-size) * 2);
     top: calc(-1 * var(--icon-size));
-  }
-  .indicator::before {
+}
+.indicator::before {
     background-color: var(--background-color);
     width: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
     height: calc((var(--icon-size) + var(--indicator-spacing)) * 2);
     top: calc(-1 * var(--icon-size) - var(--indicator-spacing));
     left: calc(-1 * var(--indicator-spacing));
-  }
-  
-  .corners::before {
+}
+
+.corners::before {
     content: "";
     box-sizing: content-box;
     position: absolute;
@@ -270,7 +279,7 @@ select:hover {
     background-color: white;
     z-index: 1;
     top: calc(-1 * var(--indicator-spacing));
-    left: calc(.2 * var(--indicator-spacing));
+    left: calc(0.2 * var(--indicator-spacing));
     transform: translateX(-100%);
     border-top-right-radius: 100%;
     border-width: calc(var(--indicator-spacing));
@@ -278,9 +287,9 @@ select:hover {
     border-style: solid;
     border-bottom: none;
     border-left: none;
-  }
-  
-  .corners::after {
+}
+
+.corners::after {
     content: "";
     box-sizing: content-box;
     position: absolute;
@@ -289,41 +298,47 @@ select:hover {
     background-color: white;
     z-index: 1;
     top: calc(-1 * var(--indicator-spacing));
-    left: calc(var(--icon-size) * 2 + -.2 * var(--indicator-spacing));
+    left: calc(var(--icon-size) * 2 + -0.2 * var(--indicator-spacing));
     border-top-left-radius: 100%;
     border-width: calc(var(--indicator-spacing));
     border-color: var(--background-color);
     border-style: solid;
     border-bottom: none;
     border-right: none;
-  }
+}
 
 /* Pop-up */
 .popup {
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #333;
-  border-radius: 8px;
-  padding: 20px;
-  width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .popup-content {
-  text-align: center;
+    text-align: center;
 }
 
 .popup-button {
-  margin-top: 10px;
-  width: 50%;
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
-  font-weight: 600;
-  text-transform: capitalize;
-  background-color: #ebebeb;
-  cursor: pointer;
+    margin-top: 10px;
+    width: 50%;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+    background-color: #ebebeb;
+    cursor: pointer;
 }
 
+/* Rodapé message*/
+.elementor-widget-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
