@@ -48,12 +48,23 @@ const addTask = async (event) => {
         // Exiba a mensagem de erro em um pop-up ou na própria tela
         openPopup(errorMessage);
     }
+};
 
+// DELETE batendo no BE
+const deleteTask = async (id) => {
+    await fetch(`${url}/tasks/${id}`, {
+        method: "delete",
+    });
+    // Chamar load da tela após ADD
+    loadTasks();
+};
+// UPDATE batendo no BE
+const updateTask = async ({ id, title, status }) => {
     try {
-        const response = await fetch(`${url}/tasks`, {
+        const response = await fetch(`${url}/tasks/${id}`, {
             method: "put",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(task),
+            body: JSON.stringify({ title, status }),
         });
 
         if (response.ok) {
@@ -78,23 +89,7 @@ const addTask = async (event) => {
         // Exiba a mensagem de erro em um pop-up ou na própria tela
         openPopup(errorMessage);
     }
-};
 
-// DELETE batendo no BE
-const deleteTask = async (id) => {
-    await fetch(`${url}/tasks/${id}`, {
-        method: "delete",
-    });
-    // Chamar load da tela após ADD
-    loadTasks();
-};
-// UPDATE batendo no BE
-const updateTask = async ({ id, title, status }) => {
-    await fetch(`${url}/tasks/${id}`, {
-        method: "put",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, status }),
-    });
     // Chamar load da tela após ADD
     loadTasks();
 };

@@ -18,6 +18,7 @@ const connection = mysql.createPool({
 
 // Função para executar o script de inicialização
 const initDatabase = async () => {
+    console.log(connection);
     try {
         // Criar Tabela
         const createTaskTableQuery = `
@@ -139,6 +140,16 @@ const initDatabase = async () => {
           WHERE title = 'Objetivo e Metas: Jenkins'
         );
         `;
+
+        // connection.getConnection()
+        //     .then((conn) => {
+        //         const res = conn.query("select foo from bar");
+        //         conn.release();
+        //         return res;
+        //     })
+        //     .catch((err) => {
+        //         console.log(err); // any of connection time or query time errors from above
+        //     });
 
         await connection.query(createTaskTableQuery);
         await connection.query(insertTaskTableQuery);
