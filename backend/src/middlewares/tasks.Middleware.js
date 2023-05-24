@@ -45,7 +45,6 @@ const connection = mysql.createPool({
 });
 
 const validatedTasksExists = async (request, response, next) => {
-    console.log("Cheguei aqui");
     const { body } = request;
 
     try {
@@ -55,7 +54,7 @@ const validatedTasksExists = async (request, response, next) => {
             [body.title]
         );
 
-        console.log(results);
+        //console.log(results);
         if (results.length > 0) {
             // Já existe uma tarefa com o mesmo título
             return response.status(400).json({
@@ -73,8 +72,51 @@ const validatedTasksExists = async (request, response, next) => {
     }
 };
 
+const validatedTasksNotExists = async (request, response, next) => {
+    const { id } = request.params;
+    console.log(id);
+    try {
+        // Verifica se já existe uma tarefa com o mesmo título
+        const [results] = await connection.query(
+            "SELECT * FROM tasks WHERE id = ?",
+            [id]
+        );
+
+        console.log(results);
+        if (results.length === 0) {
+            // Já existe uma tarefa com o mesmo título
+            return response.status(404).json({
+                message: "Não existe uma tarefa na base com esse {id}",
+            });
+        }
+
+        // O título está disponível, prossiga com a criação da tarefa
+        next();
+    } catch (err) {
+        // Trate qualquer erro de consulta ao banco de dados
+        return response
+            .status(500)
+            .json({ message: "Erro interno do servidor" });
+    }
+};
+
+const validateFieldId = (request, response, next) => {
+    const { id } = request.params;
+
+    if (!id || id.trim() === "") {
+        return response
+            .status(400)
+            .json({ message: "Campo 'id' no path não pode ser vazio!!" });
+    }
+
+    console.log("chegou no next");
+    next(); // Se não possui nenhum problema request pode seguir para chamada roter (Controller)
+};
+
 module.exports = {
     validateFieldTitle,
     validateFieldStatus,
     validatedTasksExists,
+    validateFieldId,
+    validatedTasksNotExists,
 };

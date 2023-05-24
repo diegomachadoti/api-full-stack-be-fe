@@ -2,7 +2,7 @@
     "openapi": "3.0.0",
     "info": {
         "title": "API full stack BE e FE",
-        "description": "Mostra como configurar uma aplicação Node.js com expressjs, swagger-ui-express para geração da Swagger UI e swagger-jsdoc para especificar os endpoints implementados com expressjs por meio de comentários JSDoc.",
+        "description": "Endpoints de GET , POST, PUT e DELETE para realizar cadastro de tasks. Projeto que usa tecnologias como Node.js com expressjs, HTML, CSS, JS, Docker, swagger-ui-express para geração da Swagger UI e swagger-jsdoc para especificar os endpoints implementados com expressjs por meio de comentários JSDoc.",
         "version": "1.0.0",
         "termsOfService": "https://github.com/diegomachadoti/api-full-stack-be-fe/blob/master/README.md",
         "contact": {
@@ -107,6 +107,105 @@
                                 "schema": {
                                     "tipe": "object",
                                     "$ref": "#/components/schemas/Tasks"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/tasks/{id}": {
+            "put": {
+                "summary": "Realizar atualização de tarefas",
+                "description": "Endpoint para realizar atualização de Tarefa de estudo",
+                "tags": ["Taks"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Tasks"
+                            },
+                            "examples": {
+                                "tasks": {
+                                    "value": {
+                                        "title": "Objetivo e Metas: Estudar Projeto Full Stack",
+                                        "status": "concluído"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id da tarefa",
+                        "requred": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "tipe": "object",
+                                    "$ref": "#/components/schemas/Tasks"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "tipe": "object",
+                                    "$ref": "#/components/schemas/Tasks"
+                                },
+                                "example": {
+                                    "message": "Não existe uma tarefa na base com esse {id}"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/tasks/{idDelete}": {
+            "delete": {
+                "summary": "Realizar o delete de tarefas",
+                "description": "Endpoint para realizar a exclusão de Tarefa de estudo",
+                "tags": ["Taks"],
+                "parameters": [
+                    {
+                        "name": "idDelete",
+                        "in": "path",
+                        "description": "Id da tarefa",
+                        "requred": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "tipe": "object",
+                                    "$ref": "#/components/schemas/Tasks"
+                                },
+                                "example": {
+                                    "message": "Não existe uma tarefa na base com esse {id}"
                                 }
                             }
                         }

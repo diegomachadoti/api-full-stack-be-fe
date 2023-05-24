@@ -15,13 +15,18 @@ router.post(
     tasksController.postCreatedTaks
 );
 
-router.delete("/tasks/:id", tasksController.deleteTaks);
+router.delete(
+    "/tasks/:id",
+    tasksMiddlewares.validatedTasksNotExists,
+    tasksController.deleteTaks
+);
 
 router.put(
     "/tasks/:id",
     tasksMiddlewares.validateFieldTitle,
     tasksMiddlewares.validateFieldStatus,
-    tasksMiddlewares.validatedTasksExists,
+    tasksMiddlewares.validatedTasksNotExists,
+    tasksMiddlewares.validateFieldId,
     tasksController.updateTaks
 );
 

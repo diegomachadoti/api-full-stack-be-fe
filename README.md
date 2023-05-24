@@ -93,23 +93,25 @@ Subir a imagem do mysql manualmente (_Opcional_)
 -   Docker com a imagem do mysql
 -   Cria a tabela e realiza a carga inicial no BD
 -   Server do app
--   Server do Swagger (*Ainda em atualização*)
-    - http://127.0.0.1:3000/api-docs/
+-   Server do Swagger
+    -   http://127.0.0.1:3000/api-docs/
 
 ![swagger.png](backend//swagger.png)
 
 ---
 
-#### Subindo camada de FE usando Server local (diretório _/frontend_)
+#### **Open aplicação (diretório _/frontend_)**
 
--   Start utilizando o plugin Live Server do vscode ou abrindo o index.html local
+-   Start utilizando o plugin Live Server do vscode
     > http://127.0.0.1:5500/frontend/index.html
+-   Ou abrindo o arquivo
+    > /api-full-stack-be-fe/frontend/index.html
 
 ---
 
-#### Importar requests no postman para utilização das chamadas de BE.
+Importar requests no postman para utilização das chamadas de BE.
 
--   Arquivo na raiz do projeto **postman_collection.json**
+-   Arquivo na raiz do projeto **backend/postman_collection.json**
 
 ## Links adicionais
 

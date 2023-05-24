@@ -129,7 +129,7 @@ select:hover {
 /* Menu */
 :root {
     --icon-size: 2.5rem;
-    --indicator-spacing: calc(var(--icon-size) / 7);
+    --indicator-spacing: calc(var(--icon-size) / 8);
     --border-radius: calc(var(--icon-size) / 4);
     --nav-item-padding: calc(var(--icon-size) / 2);
     --background-color: #333;
