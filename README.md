@@ -1,4 +1,4 @@
-# api-full-stack-be-fe
+# *api-full-stack-be-fe*
 
 🎯 **API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)**
 ![app.png](frontend/app.png)
@@ -161,7 +161,7 @@ Importar requests no postman para utilização das chamadas de BE.
 
 -   Arquivo na raiz do projeto **backend/postman_collection.json**
 
-## 📚 Links adicionais
+## 🔗 Links adicionais
 
 -   [FE - Material Google](https://fonts.google.com/icons)
 -   [FE - Icons](https://ionic.io/ionicons)
