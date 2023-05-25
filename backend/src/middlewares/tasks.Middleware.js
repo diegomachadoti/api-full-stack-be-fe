@@ -1,4 +1,6 @@
-// Camada aonde realizamos as validações das requests
+/* 
+    Camada aonde realizamos as validações das requests
+*/
 const { request, response } = require("express");
 const mysql = require("mysql2/promise");
 require("dotenv").config();

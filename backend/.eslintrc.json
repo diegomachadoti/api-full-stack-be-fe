@@ -13,5 +13,11 @@
         "linebreak-style": ["error", "unix"],
         "quotes": ["error", "single"],
         "semi": ["error", "always"]
-    }
+    },
+    "overrides": [
+        {
+            "files": ["**/README.md"],
+            "rules": {}
+        }
+    ]
 }

@@ -1,14 +1,25 @@
-// Camada model aonde realiza as chamadas com o BD
-
+/*
+    Camada model aonde realiza as chamadas com o BD
+        - Todas funções são async ou seja assincrona para realizar a busca no banco de dados
+*/
 const connection = require("./connection");
 
-// Função GET para acessar o BD assincrona tem que esperar a execução
+// Função GET ALL
 const getAll = async () => {
     const [tasks] = await connection.execute("SELECT * FROM tasks"); // pegando primeiro posição do array descartando o buffer
     return tasks;
 };
 
-// Função POST para cadastrar
+// Função GET BY ID
+const getById = async (id) => {
+    const [task] = await connection.execute(
+        "SELECT * FROM tasks WHERE id = ?",
+        [id]
+    );
+    return task;
+};
+
+// Função POST
 const postCreatedTaks = async (task) => {
     const { title } = task;
     const status = "pendente";
@@ -46,4 +57,5 @@ module.exports = {
     postCreatedTaks,
     deleteTask,
     putUpdateTask,
+    getById,
 };

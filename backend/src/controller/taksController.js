@@ -1,10 +1,20 @@
-// Camada controller aonde realiza as chamadas para a camada model (BD)
-
+/*
+    Camada controller aonde:
+        - Realiza as chamadas para a camada model (BD)
+*/
 const tasksModel = require("../models/tasksModel");
 
+// GET ALL
 const getAll = async (_request, response) => {
     const tasks = await tasksModel.getAll();
     return response.status(200).json(tasks);
+};
+
+// GET ID
+const getById = async (request, response) => {
+    const { id } = request.params;
+    const task = await tasksModel.getById(id);
+    return response.status(200).json(task);
 };
 
 // Função POST
@@ -32,4 +42,5 @@ module.exports = {
     postCreatedTaks,
     deleteTaks,
     updateTaks,
+    getById,
 };

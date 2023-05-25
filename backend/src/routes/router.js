@@ -8,6 +8,12 @@ const tasksMiddlewares = require("../middlewares/tasks.Middleware");
 // Rotas chamando validações da request (Middleware) info para o Controller e depois para o Model
 router.get("/tasks", tasksController.getAll);
 
+router.get(
+    "/tasks/:id",
+    tasksMiddlewares.validatedTasksNotExists,
+    tasksController.getById
+);
+
 router.post(
     "/tasks",
     tasksMiddlewares.validatedTasksExists,
