@@ -10,29 +10,30 @@ router.get("/tasks", tasksController.getAll);
 
 router.get(
     "/tasks/:id",
-    tasksMiddlewares.validatedTasksNotExists,
+    tasksMiddlewares.validatedTasksByIdExists,
     tasksController.getById
 );
 
 router.post(
     "/tasks",
-    tasksMiddlewares.validatedTasksExists,
     tasksMiddlewares.validateFieldTitle,
+    tasksMiddlewares.validatedTasksByTitleExists,
+
     tasksController.postCreatedTaks
 );
 
 router.delete(
     "/tasks/:id",
-    tasksMiddlewares.validatedTasksNotExists,
+    tasksMiddlewares.validatedTasksByIdExists,
     tasksController.deleteTaks
 );
 
 router.put(
     "/tasks/:id",
-    tasksMiddlewares.validatedTasksExists,
+    tasksMiddlewares.validatedTasksByIdExists,
+    tasksMiddlewares.validatedTasksByTitleExists,
     tasksMiddlewares.validateFieldTitle,
     tasksMiddlewares.validateFieldStatus,
-    tasksMiddlewares.validatedTasksNotExists,
     tasksMiddlewares.validateFieldId,
     tasksController.updateTaks
 );

@@ -46,7 +46,7 @@ const connection = mysql.createPool({
     database: process.env.MYSQL_DB,
 });
 
-const validatedTasksExists = async (request, response, next) => {
+const validatedTasksByTitleExists = async (request, response, next) => {
     const { body } = request;
 
     try {
@@ -60,7 +60,7 @@ const validatedTasksExists = async (request, response, next) => {
         if (results.length > 0) {
             // Já existe uma tarefa com o mesmo título
             return response.status(400).json({
-                message: "Já existe uma tarefa com o mesmo título",
+                message: "Já existe uma tarefa com o mesmo título!!",
             });
         }
 
@@ -74,7 +74,7 @@ const validatedTasksExists = async (request, response, next) => {
     }
 };
 
-const validatedTasksNotExists = async (request, response, next) => {
+const validatedTasksByIdExists = async (request, response, next) => {
     const { id } = request.params;
     console.log(id);
     try {
@@ -88,7 +88,7 @@ const validatedTasksNotExists = async (request, response, next) => {
         if (results.length === 0) {
             // Já existe uma tarefa com o mesmo título
             return response.status(404).json({
-                message: "Não existe uma tarefa na base com esse {id}",
+                message: "Não existe uma tarefa na base com esse {id}!!",
             });
         }
 
@@ -118,7 +118,7 @@ const validateFieldId = (request, response, next) => {
 module.exports = {
     validateFieldTitle,
     validateFieldStatus,
-    validatedTasksExists,
+    validatedTasksByTitleExists,
     validateFieldId,
-    validatedTasksNotExists,
+    validatedTasksByIdExists,
 };

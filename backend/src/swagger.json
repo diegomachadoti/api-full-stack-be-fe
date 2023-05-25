@@ -151,7 +151,7 @@
                                     "$ref": "#/components/schemas/Tasks"
                                 },
                                 "example": {
-                                    "message": "Não existe uma tarefa na base com esse {id}"
+                                    "message": "Não existe uma tarefa na base com esse {id}!!"
                                 }
                             }
                         }
@@ -213,7 +213,21 @@
                                     "$ref": "#/components/schemas/Tasks"
                                 },
                                 "example": {
-                                    "message": "Não existe uma tarefa na base com esse {id}"
+                                    "message": "Não existe uma tarefa na base com esse {id}!!"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "tipe": "object",
+                                    "$ref": "#/components/schemas/Tasks"
+                                },
+                                "example": {
+                                    "message": "Já existe uma tarefa com o mesmo título!!"
                                 }
                             }
                         }
