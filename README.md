@@ -166,3 +166,7 @@ Importar requests no postman para utilização das chamadas de BE.
 -   [FE - Icons](https://ionic.io/ionicons)
 -   [BE - Swagger](https://swagger.io/specification/)
 -   [BE - Swagger Json Example](https://petstore.swagger.io/v2/swagger.json)
+
+## 📚 To-do
+- Add consulta por ID
+
