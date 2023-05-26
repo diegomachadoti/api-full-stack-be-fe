@@ -71,6 +71,21 @@ button[type="submit"] {
     font-weight: 500;
     cursor: pointer;
 }
+/* Estilizar o button search */
+button[type="search"] {
+    background-color: #6f7172;
+    height: 50px;
+    width: 50px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    cursor: pointer;
+}
 
 /* Estilizar tabela */
 table {
@@ -84,10 +99,12 @@ th {
     padding: 10px 15px;
     border: 1px solid #ddd;
     text-align: center;
+    color: #333;
 }
 
 td {
-    color: #333;
+    /* alternando cores do texto das linhas */
+    color: rgb(77, 75, 75);
     font-weight: 600;
 }
 

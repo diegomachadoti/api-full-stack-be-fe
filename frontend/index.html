@@ -16,6 +16,7 @@
         <!-- Imagem -->
         <div class="image-container">
             <img
+                id="logo"
                 src="./logo.png"
                 alt="Imagem PNG"
                 style="width: 200px; height: 100px"
@@ -41,7 +42,7 @@
                                 />
                             </svg>
                         </div>
-                        <div class="text">Home</div>
+                        <div id="home" class="text">Home</div>
                     </a>
                 </li>
                 <li>
@@ -57,7 +58,7 @@
                                 />
                             </svg>
                         </div>
-                        <div class="text">Conta</div>
+                        <div id="conta" class="text">Conta</div>
                     </a>
                 </li>
                 <li>
@@ -75,7 +76,7 @@
                                 />
                             </svg>
                         </div>
-                        <div class="text">Mensagens</div>
+                        <div id="mensagem" class="text">Mensagens</div>
                     </a>
                 </li>
                 <!-- <li>
@@ -107,7 +108,7 @@
                                 />
                             </svg>
                         </div>
-                        <div class="text">Configurações</div>
+                        <div id="config"class="text">Configurações</div>
                     </a>
                 </li>
             </ul>
@@ -121,6 +122,7 @@
                     placeholder="Adicionar tarefa"
                     class="input-task"
                 />
+                <button type="search" disabled style="opacity: 0.1">?</button>
                 <button type="submit">+</button>
             </form>
 
@@ -149,13 +151,13 @@
                             </select>
                         </td>
                         <td>
-                            <button class="btn-action">
+                            <button id="edit" class="btn-action">
                                 <span class="material-symbols-outlined"
                                     >edit</span
                                 >
                             </button>
 
-                            <button class="btn-action">
+                            <button id="delete" class="btn-action">
                                 <span class="material-symbols-outlined"
                                     >delete</span
                                 >
@@ -166,11 +168,11 @@
             </table>
         </main>
 
-         <!-- Rodapé -->
+        <!-- Rodapé -->
         <div class="elementor-widget-container">
             <p>© 2023 Desenvolvido por diegomachadoti</p>
         </div>
-        
+
         <script src="./js/script.js"></script>
     </body>
 </html>

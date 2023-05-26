@@ -1,6 +1,8 @@
 const tbody = document.querySelector("tbody");
 const addForm = document.querySelector(".add-form");
 const inputTask = document.querySelector(".input-task");
+const searchButton = document.querySelector('button[type="search"]');
+const submitButton = document.querySelector('button[type="submit"]');
 const url = `http://localhost:3333`;
 
 /**
@@ -14,6 +16,92 @@ const fetchTasks = async () => {
     const tasks = await response.json();
     return tasks;
 };
+
+// LIST BY ID batendo no BE
+const searchTask = async (event) => {
+    //event.preventDefault();
+    const id = inputTask.value; // Obtenha o valor do campo de entrada
+    const response = await fetch(`${url}/tasks/${id}`); // Use o valor do título para buscar a tarefa
+    const task = await response.json(); // Obtenha a resposta como JSON
+
+    tbody.innerHTML = ""; // Limpar a tabela a cada chamada no load para não repetir
+
+    if (response.ok && task) {
+        const { id, title, created_at, status } = task;
+
+        //const options = { dateStyle: "long", timeStyle: "short" };
+        //const date = new Date(created_at).toLocaleString("pt-br", options); // converter para data local passano o formato pt-br
+
+        // Aqui passa os tipos de tags para serem criados
+        const tr = createElement("tr");
+        const tdTitle = createElement("td", title);
+        const tdCreatedAt = createElement("td", created_at);
+        const tdStatus = createElement("td");
+        const tdActions = createElement("td");
+
+        // Aqui passa o status para setar o status e carregar no combo e fazer o update
+        const select = createSelect(status);
+        select.addEventListener(
+            "change",
+            ({ target }) => updateTask({ ...task, status: target.value }) // 'spread operator' pega todas propriedade do elemento
+        );
+
+        // Passar os parametros para monstar os botões de cada linha automaticamente
+        const editButton = createElement(
+            "button",
+            "",
+            '<span class="material-symbols-outlined">edit</span>'
+        );
+        const deleteButton = createElement(
+            "button",
+            "",
+            '<span class="material-symbols-outlined">delete</span>'
+        );
+
+        // Evento para habilitar campos para adição
+        const editForm = createElement("form");
+        const editInput = createElement("input");
+        editInput.value = title;
+        editForm.appendChild(editInput);
+
+        // Chama o update do botão (ação submit função anônima)
+        editForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            updateTask({ id, title: editInput.value, status });
+        });
+
+        editButton.addEventListener("click", () => {
+            tdTitle.innerText = "";
+            tdTitle.appendChild(editForm);
+        });
+
+        //  Aplicar os estilos CSS nos botões montados
+        editButton.classList.add("btn-action");
+        deleteButton.classList.add("btn-action");
+
+        // Chama o delete do botão (ação click função anônima)
+        deleteButton.addEventListener("click", () => deleteTask(id));
+
+        //  Aplicar demais estilos CSS
+        tdStatus.appendChild(select);
+        tdActions.appendChild(editButton);
+        tdActions.appendChild(deleteButton);
+        tr.appendChild(tdTitle);
+        tr.appendChild(tdCreatedAt);
+        tr.appendChild(tdStatus);
+        tr.appendChild(tdActions);
+
+        // Adicione a linha à tabela
+        tbody.appendChild(tr);
+    } else {
+        // Exiba uma mensagem de erro se a tarefa não for encontrada
+        console.log("Tarefa não encontrada");
+    }
+
+    inputTask.value = "";
+    return task;
+};
+
 // ADD batendo no BE
 const addTask = async (event) => {
     event.preventDefault();
@@ -58,6 +146,7 @@ const deleteTask = async (id) => {
     // Chamar load da tela após ADD
     loadTasks();
 };
+
 // UPDATE batendo no BE
 const updateTask = async ({ id, title, status }) => {
     try {
@@ -168,7 +257,7 @@ const createRow = (task) => {
     editInput.value = title;
     editForm.appendChild(editInput);
 
-    // Chama o update do botão (ação submit função anônima)
+    // Ouvinte | chama o update do botão (ação submit função anônima)
     editForm.addEventListener("submit", (event) => {
         event.preventDefault();
         updateTask({ id, title: editInput.value, status });
@@ -203,16 +292,35 @@ const loadTasks = async () => {
     const tasks = await fetchTasks();
 
     tbody.innerHTML = ""; // Limpar a tabela a cada chamada no load para não repetir
-
     tasks.forEach((task) => {
         const tr = createRow(task);
         tbody.appendChild(tr);
     });
 };
 
-// Link do componente da tela com a função que chamada o BE
-addForm.addEventListener("submit", addTask);
+const loadTasksByid = async () => {
+    const taskById = await searchTask();
+    tbody.innerHTML = ""; // Limpar a tabela a cada chamada no load para não repetir
+    taskById.forEach((task) => {
+        const tr = createRow(task);
+        tbody.appendChild(tr);
+    });
+};
+
+/**
+ * Ouvinte de event
+ */
+submitButton.addEventListener("click", addTask);
+submitButton.addEventListener("keypress", (event) => {
+    if (event.code === "Enter") {
+        event.preventDefault();
+        addTask();
+    }
+});
 loadTasks();
+
+//searchButton.addEventListener("click", searchTask);
+//loadTasksByid();
 
 /**
  * Funções responsável pelo MENU

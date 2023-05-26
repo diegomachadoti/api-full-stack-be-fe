@@ -18,7 +18,6 @@ router.post(
     "/tasks",
     tasksMiddlewares.validateFieldTitle,
     tasksMiddlewares.validatedTasksByTitleExists,
-
     tasksController.postCreatedTaks
 );
 

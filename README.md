@@ -128,7 +128,6 @@ Subir a imagem do mysql manualmente (_Opcional_)
 > docker start mysql
 
 
-
 ## 🛠️ Executar Projeto
 
 #### Subir camada de BE local (diretório _/backend_)
@@ -145,6 +144,8 @@ Subir a imagem do mysql manualmente (_Opcional_)
 
 ![swagger.png](backend//swagger.png)
 
+Tag Debug
+> npm run start:debug
 ---
 
 #### **Open aplicação (diretório _/frontend_)**

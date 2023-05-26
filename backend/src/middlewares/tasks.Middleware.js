@@ -83,7 +83,7 @@ const validatedTasksByIdExists = async (request, response, next) => {
             "SELECT * FROM tasks WHERE id = ?",
             [id]
         );
-
+        
         console.log(results);
         if (results.length === 0) {
             // Já existe uma tarefa com o mesmo título
