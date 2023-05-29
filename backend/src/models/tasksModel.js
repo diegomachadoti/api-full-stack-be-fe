@@ -22,7 +22,7 @@ const getById = async (id) => {
 // Função POST
 const postCreatedTaks = async (task) => {
     const { title } = task;
-    const status = "pendente";
+    const { status } = task;
     const dataUTC = new Date(Date.now()).toUTCString();
 
     const [createdTaks] = await connection.execute(
