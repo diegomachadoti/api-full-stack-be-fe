@@ -37,4 +37,16 @@ router.put(
     tasksController.updateTaks
 );
 
+// Simulation assíncrono
+router.get("/assinc", (req, res) => {
+    // Execução do código assíncrono
+    tasksController.testAsyncFlow()
+        .then((statusCode) => {
+            res.status(statusCode).send("Teste assíncrono concluído");
+        })
+        .catch((error) => {
+            res.status(500).send("Erro durante o teste assíncrono");
+        });
+});
+
 module.exports = router;

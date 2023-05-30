@@ -37,10 +37,38 @@ const updateTaks = async (request, response) => {
     return response.status(204).json();
 };
 
+// Função assíncrona que realiza uma operação demorada
+const asyncOperation = (simulateSuccess) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (simulateSuccess) {
+                resolve("Resultado da operação assíncrona");
+            } else {
+                reject(
+                    new Error("Ocorreu um erro durante a operação assíncrona")
+                );
+            }
+        }, 8000);
+    });
+};
+
+// Função de teste assíncrono
+const testAsyncFlow = async () => {
+    try {
+        const result = await asyncOperation(true);
+        console.log("Resultado:", result);
+        return 200; // Retornar o HTTP status response 200
+    } catch (error) {
+        console.error("Erro durante o teste assíncrono:", error.message);
+        return 500; // Retornar o HTTP status response 500 em caso de erro
+    }
+};
+
 module.exports = {
     getAll,
     postCreatedTaks,
     deleteTaks,
     updateTaks,
     getById,
+    testAsyncFlow,
 };
