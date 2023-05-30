@@ -48,7 +48,7 @@ const asyncOperation = (simulateSuccess) => {
                     new Error("Ocorreu um erro durante a operação assíncrona")
                 );
             }
-        }, 8000);
+        }, 8000); // 8segundos
     });
 };
 
