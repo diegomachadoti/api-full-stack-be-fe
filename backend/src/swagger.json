@@ -66,13 +66,17 @@
                             }
                         }
                     },
-                    "200": {
+                    "201": {
                         "description": "CREATED",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "tipe": "object",
-                                    "$ref": "#/components/schemas/Tasks"
+                                    "type": "object",
+                                    "properties": {
+                                        "insertId": {
+                                            "type": "integer"
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -100,13 +104,13 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "tipe": "object",
-                                    "$ref": "#/components/schemas/Tasks"
+                                    "$ref": "#/components/schemas/TasksAll"
                                 }
                             }
                         }
@@ -131,7 +135,7 @@
                     }
                 ],
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "OK",
                         "content": {
                             "application/json": {
@@ -193,16 +197,8 @@
                     }
                 ],
                 "responses": {
-                    "201": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "tipe": "object",
-                                    "$ref": "#/components/schemas/Tasks"
-                                }
-                            }
-                        }
+                    "204": {
+                        "description": "No Content"
                     },
                     "404": {
                         "description": "Not Found",
