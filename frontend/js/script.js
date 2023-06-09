@@ -2,7 +2,7 @@ const tbody = document.querySelector("tbody");
 const addForm = document.querySelector(".add-form");
 const inputTask = document.querySelector(".input-task");
 const searchButton = document.querySelector('button[type="search"]');
-const submitButton = document.querySelector('button[type="submit"]');
+//const submitButton = document.querySelector('button[type="submit"]');
 const url = `http://localhost:3333`;
 
 /**
@@ -143,7 +143,7 @@ const deleteTask = async (id) => {
     await fetch(`${url}/tasks/${id}`, {
         method: "delete",
     });
-    // Chamar load da tela após ADD
+    // Chamar load da tela após DELETE
     loadTasks();
 };
 
@@ -179,7 +179,7 @@ const updateTask = async ({ id, title, status }) => {
         openPopup(errorMessage);
     }
 
-    // Chamar load da tela após ADD
+    // Chamar load da tela após UPDATE
     loadTasks();
 };
 
@@ -310,14 +310,15 @@ const loadTasksByid = async () => {
 /**
  * Ouvinte de event
  */
-submitButton.addEventListener("click", addTask);
+addForm.addEventListener("submit", addTask);
+loadTasks();
 // submitButton.addEventListener("keypress", (event) => {
 //     if (event.code === "Enter") {
 //         event.preventDefault();
 //         addTask();
 //     }
 // });
-loadTasks();
+
 
 //searchButton.addEventListener("click", searchTask);
 //loadTasksByid();
