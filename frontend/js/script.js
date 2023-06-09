@@ -311,12 +311,12 @@ const loadTasksByid = async () => {
  * Ouvinte de event
  */
 submitButton.addEventListener("click", addTask);
-submitButton.addEventListener("keypress", (event) => {
-    if (event.code === "Enter") {
-        event.preventDefault();
-        addTask();
-    }
-});
+// submitButton.addEventListener("keypress", (event) => {
+//     if (event.code === "Enter") {
+//         event.preventDefault();
+//         addTask();
+//     }
+// });
 loadTasks();
 
 //searchButton.addEventListener("click", searchTask);
