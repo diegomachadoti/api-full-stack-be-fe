@@ -129,9 +129,10 @@ Subir a imagem do mysql manualmente (_Opcional_)
 
 > docker start mysql
 
-Caso a alguma porta local estaja sendo utiliza podemos usar esses comando para listar ela e finalizar o processo
+Caso alguma porta local esteja sendo utiliza podemos usar esses comando para listar e finalizar o processo
 
 > lsof -i :3000
+
 > kill -9 PID
 
 ## 🛠️ Executar Projeto
