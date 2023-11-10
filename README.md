@@ -1,53 +1,55 @@
-# *api-full-stack-be-fe*
+# _api-full-stack-be-fe_
+
 🎯 **API completa usando BE (NodeJS, Express e MySQL) e FE (html, css e javascript)**
 ![app.png](frontend/app.png)
 
 ## 📁 Estrutura do projeto
 
-- **backend**
-    - src
-        - controller
-            * ***tasksController.js***  *Realiza as chamadas para a camada model*
-        - middlewares
-            * ***tasksMiddleware.js*** *Validações das requests chamadas no routes*
-        - models
-            * ***connections.js*** *Configuração de conexão com o banco de dados MySQL*
-            * ***tasksModel.js*** *Realiza interação com o banco de dados MySQL*
-        - routes
-            * ***router.js*** *Todas as rotas da aplicação*
-    
-    ***app.js*** *Configurações iniciais / core da aplicação*
-    
-    ***db-init.js*** *Criação da tabela e inserção inicial*
-    
-    ***server.js*** *Inicialização da aplicação*
-    
-    ***swagger.json*** *Configurações do Swagger*
-    
-    ***.env*** *Variáveis de ambiente*
-    
-    ***.eslintrc.json*** *Configurações do plugin de desenvolvimento instalado*
-    
-    ***docker-compose.yml*** *Configurações do MySQL para execução no Docker*
-    
-    ***Dockerfile*** *Configurações do ambiente Dockerizado*
-    
-    ***package-lock.json*** *Gerado automaticamente conforme package.json*
-    
-    ***package.json*** *Dependências do projeto*
-    
-    ***TASKS.postman_collection.json*** *Arquivo de importação do Postman*
+-   **backend**
 
-- **frontend**
-    - css
-        * ***style.css*** *Estilo da página*
-    - js
-        * ***script.js*** *Funções de comportamento e chamadas para o backend*
+    -   src
+        -   controller
+            -   **_tasksController.js_** _Realiza as chamadas para a camada model_
+        -   middlewares
+            -   **_tasksMiddleware.js_** _Validações das requests chamadas no routes_
+        -   models
+            -   **_connections.js_** _Configuração de conexão com o banco de dados MySQL_
+            -   **_tasksModel.js_** _Realiza interação com o banco de dados MySQL_
+        -   routes
+            -   **_router.js_** _Todas as rotas da aplicação_
 
-    ***index.html*** *página principal da aplicação*
+    **_app.js_** _Configurações iniciais / core da aplicação_
 
-----
+    **_db-init.js_** _Criação da tabela e inserção inicial_
 
+    **_server.js_** _Inicialização da aplicação_
+
+    **_swagger.json_** _Configurações do Swagger_
+
+    **_.env_** _Variáveis de ambiente_
+
+    **_.eslintrc.json_** _Configurações do plugin de desenvolvimento instalado_
+
+    **_docker-compose.yml_** _Configurações do MySQL para execução no Docker_
+
+    **_Dockerfile_** _Configurações do ambiente Dockerizado_
+
+    **_package-lock.json_** _Gerado automaticamente conforme package.json_
+
+    **_package.json_** _Dependências do projeto_
+
+    **_TASKS.postman_collection.json_** _Arquivo de importação do Postman_
+
+-   **frontend**
+
+    -   css
+        -   **_style.css_** _Estilo da página_
+    -   js
+        -   **_script.js_** _Funções de comportamento e chamadas para o backend_
+
+    **_index.html_** _página principal da aplicação_
+
+---
 
 ## 🔨 Pré-requisitos
 
@@ -127,6 +129,10 @@ Subir a imagem do mysql manualmente (_Opcional_)
 
 > docker start mysql
 
+Caso a alguma porta local estaja sendo utiliza podemos usar esses comando para listar ela e finalizar o processo
+
+> lsof -i :3000
+> kill -9 PID
 
 ## 🛠️ Executar Projeto
 
@@ -145,7 +151,9 @@ Subir a imagem do mysql manualmente (_Opcional_)
 ![swagger.png](backend//swagger.png)
 
 Tag Debug
+
 > npm run start:debug
+
 ---
 
 #### **Open aplicação (diretório _/frontend_)**
@@ -169,5 +177,5 @@ Importar requests no postman para utilização das chamadas de BE.
 -   [BE - Swagger Json Example](https://petstore.swagger.io/v2/swagger.json)
 
 ## 📚 To-do
-- Add consulta por ID
 
+-   Add consulta por ID
