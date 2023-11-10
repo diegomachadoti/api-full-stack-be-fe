@@ -5,10 +5,9 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "npm run docker-start && npm run db-init && node src/server.js",
+        "start": "npm run docker-start && node src/server.js",
         "dev": "nodemon src/server.js",
         "docker-start": "docker-compose up -d",
-        "db-init": "node src/db-init.js",
         "start:debug": "DEBUG=* npm start"
     },
     "keywords": [],
@@ -19,7 +18,7 @@
         "date-fns": "^2.30.0",
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
-        "mysql2": "^3.3.1",
+        "mysql2": "^3.6.3",
         "swagger-jsdoc": "^6.2.8",
         "swagger-ui-express": "^4.6.3"
     },

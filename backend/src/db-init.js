@@ -5,15 +5,23 @@ require("dotenv").config();
 
 console.log(process.env.MYSQL_HOST);
 console.log(process.env.MYSQL_USER);
-console.log(process.env.MYSQL_PASSWORD);
+console.log(process.env.MYSQL_PASS);
 console.log(process.env.MYSQL_DB);
 
 // Configuração da conexão com o banco de dados
 const connection = mysql.createPool({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
+    password: "root",
     database: process.env.MYSQL_DB,
+    port: process.env.APP_PORT,
+    waitForConnections: true,
+    connectionLimit: 10,
+    maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`
+    idleTimeout: 60000, // idle connections timeout, in milliseconds, the default value 60000
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0,
 });
 
 // Função para executar o script de inicialização
@@ -151,25 +159,27 @@ const initDatabase = async () => {
         //         console.log(err); // any of connection time or query time errors from above
         //     });
 
-        await connection.query(createTaskTableQuery);
-        await connection.query(insertTaskTableQuery);
-        await connection.query(insertTaskTableQueryTwo);
-        await connection.query(insertTaskTableQueryTree);
-        await connection.query(insertTaskTableQueryFour);
-        await connection.query(insertTaskTableQueryFive);
-        await connection.query(insertTaskTableQuerySix);
-        await connection.query(insertTaskTableQuerySeven);
-        await connection.query(insertTaskTableQueryEight);
-        await connection.query(insertTaskTableQueryNine);
-        await connection.query(insertTaskTableQueryTen);
+        connection.query(createTaskTableQuery);
+        connection.query(insertTaskTableQuery);
+        connection.query(insertTaskTableQueryTwo);
+        connection.query(insertTaskTableQueryTree);
+        connection.query(insertTaskTableQueryFour);
+        connection.query(insertTaskTableQueryFive);
+        connection.query(insertTaskTableQuerySix);
+        connection.query(insertTaskTableQuerySeven);
+        connection.query(insertTaskTableQueryEight);
+        connection.query(insertTaskTableQueryNine);
+        connection.query(insertTaskTableQueryTen);
         console.log("Tabela de tarefas criada com sucesso!");
         console.log("Carga inicial de tarefas criada com sucesso!");
+        //connection.release();
     } catch (error) {
         console.error(
             "Erro ao executar o script de inicialização do banco de dados:",
             error
         );
     } finally {
+        console.log("Passei pelo finally");
         connection.end(); // Fechar a conexão com o banco de dados
     }
 };
